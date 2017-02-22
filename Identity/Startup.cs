@@ -86,7 +86,6 @@ namespace WebApplication1
 
                 app.UseWebpackDevMiddleware(new WebpackDevMiddlewareOptions
                 {
-                    ConfigFile = "./internals/webpack.dev.babel.js",
                     HotModuleReplacement = true,
                     ReactHotModuleReplacement = true
                 });
