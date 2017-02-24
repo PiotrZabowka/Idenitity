@@ -1,9 +1,10 @@
-﻿import * as React from 'react';
+﻿import React from 'react';
 import { renderToString } from 'react-dom/server';
 import { createServerRenderer } from 'aspnet-prerendering';
-import { match, RouterContext } from 'react-router'
+import { match, RouterContext } from 'react-router';
 
-import routes from './routes'
+
+import routes from './routes';
 
 export default createServerRenderer((params) => new Promise((resolve) => {
   match({ routes:routes(), location: params.location }, (error, redirectLocation, renderProps) => {
@@ -11,7 +12,7 @@ export default createServerRenderer((params) => new Promise((resolve) => {
       throw error;
     }
     resolve({
-      html: renderToString(<RouterContext {...renderProps} />),
+      html: renderToString(<RouterContext {...renderProps} />)
     });
-  })
+  });
 }));

@@ -8,6 +8,5 @@ import { Router, browserHistory } from 'react-router';
 import createRoutes from './routes';
 
 ReactDOM.render(
-  <Router history={browserHistory} routes={createRoutes()} >
-  </Router>,
+  <Router history={browserHistory} routes={createRoutes()}  />,
   document.getElementById('react-app'));

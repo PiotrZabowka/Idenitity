@@ -4,9 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using WebApplication1.Models;
+using Identity.Models;
 
-namespace WebApplication1.Data
+namespace Identity.Data
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
@@ -23,6 +23,6 @@ namespace WebApplication1.Data
             // Add your customizations after calling base.OnModelCreating(builder);
         }
 
-        public DbSet<WebApplication1.Models.ApplicationUser> ApplicationUser { get; set; }
+        public DbSet<Identity.Models.ApplicationUser> ApplicationUser { get; set; }
     }
 }

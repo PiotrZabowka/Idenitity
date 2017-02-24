@@ -2,7 +2,7 @@
 using IdentityServer4.Models;
 using IdentityModel;
 
-namespace WebApplication1
+namespace Identity
 {
     public class Config
     {

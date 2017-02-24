@@ -1,2 +1,12 @@
 export { default as App } from './App/App';
-export { default as NotFound } from './NotFound';
+export { default as Admin } from './Admin/Admin';
+export { default as ClientCreate } from './ClientCreate/ClientCreate';
+export { default as ClientEdit } from './ClientEdit/ClientEdit';
+export { default as ClientList } from './ClientList/ClientList';
+export { default as ForgotPassword } from './ForgotPassword/ForgotPassword';
+export { default as Login } from './Login/Login';
+export { default as NotFound } from './NotFound/NotFound';
+export { default as Register } from './Register/Register';
+export { default as UserCreate } from './UserCreate/UserCreate';
+export { default as UserEdit } from './UserEdit/UserEdit';
+export { default as UserList } from './UserList/UserList';
