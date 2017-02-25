@@ -2,17 +2,29 @@
 import { renderToString } from 'react-dom/server';
 import { createServerRenderer } from 'aspnet-prerendering';
 import { match, RouterContext } from 'react-router';
+import { Provider } from 'react-redux';
+import { syncHistoryWithStore } from 'react-router-redux';
+import createMemoryHistory from 'history/lib/createMemoryHistory';
 
 
+import configureStore from './configureStore';
 import routes from './routes';
 
 export default createServerRenderer((params) => new Promise((resolve) => {
-  match({ routes:routes(), location: params.location }, (error, redirectLocation, renderProps) => {
+  console.log(params);
+  const memoryHistory = createMemoryHistory();
+  const store = configureStore({}, memoryHistory);
+  // Create an enhanced history that syncs navigation events with the store
+  const history = syncHistoryWithStore(memoryHistory, store);
+
+  match({ routes:routes(store), location: params.location }, (error, redirectLocation, renderProps) => {
     if (error) {
       throw error;
     }
     resolve({
-      html: renderToString(<RouterContext {...renderProps} />)
+      html: renderToString(
+      <Provider store={store}><RouterContext {...renderProps} /></Provider>
+      )
     });
   });
 }));

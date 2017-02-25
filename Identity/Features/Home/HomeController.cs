@@ -11,7 +11,8 @@ namespace Identity.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+
+            return View(new { hello="world" });
         }
 
         public IActionResult About()
