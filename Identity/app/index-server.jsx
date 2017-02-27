@@ -10,21 +10,25 @@ import createMemoryHistory from 'history/lib/createMemoryHistory';
 import configureStore from './configureStore';
 import routes from './routes';
 
-export default createServerRenderer((params) => new Promise((resolve) => {
+export default createServerRenderer(params => new Promise((resolve) => {
   console.log(params);
   const memoryHistory = createMemoryHistory();
-  const store = configureStore({}, memoryHistory);
+  const store = configureStore(params.data, memoryHistory);
   // Create an enhanced history that syncs navigation events with the store
-  const history = syncHistoryWithStore(memoryHistory, store);
+  syncHistoryWithStore(memoryHistory, store);
 
-  match({ routes:routes(store), location: params.location }, (error, redirectLocation, renderProps) => {
-    if (error) {
-      throw error;
-    }
-    resolve({
-      html: renderToString(
-      <Provider store={store}><RouterContext {...renderProps} /></Provider>
-      )
+  match({ routes: routes(store), location: params.location },
+    (error, redirectLocation, renderProps) => {
+      if (error) {
+        throw error;
+      }
+      resolve({
+        html: renderToString(
+          <Provider store={store}><RouterContext {...renderProps} /></Provider>,
+      ),
+        globals: {
+          __PRELOADED_STATE__: store.getState(),
+        },
+      });
     });
-  });
 }));

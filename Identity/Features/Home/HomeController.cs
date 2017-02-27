@@ -11,8 +11,10 @@ namespace Identity.Controllers
     {
         public IActionResult Index()
         {
-
-            return View(new { hello="world" });
+            return View(new { auth=new{
+              isAuthenticated=this.User.Identity.IsAuthenticated,
+              userName=this.User.Identity.Name
+            }});
         }
 
         public IActionResult About()

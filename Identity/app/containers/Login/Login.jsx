@@ -1,12 +1,31 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
+import { connect } from 'react-redux';
+import LoginForm from 'components/LoginForm';
 import style from './Login.css';
+import { requestLogin } from 'modules/auth';
 
 class Login extends Component {
   render() {
     return (
-      <div className={style.root} />
+      <div className={`${style.root} container`}>
+        <div className="panel col-sm-4 col-sm-offset-4">
+          <h1>Login to Identity</h1>
+          <LoginForm onSubmit={this.props.onLogin} />
+        </div>
+      </div>
     );
   }
 }
+Login.propTypes = {
+  onLogin: PropTypes.func.isRequired,
+};
 
-export default Login;
+const mapStateToProps = state => ({
+});
+
+const mapDispatchToProps = dispatch => ({
+  onLogin: (values) => {
+    dispatch(requestLogin(values));
+  },
+});
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

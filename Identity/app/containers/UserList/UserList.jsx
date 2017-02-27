@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import style from './UserList.css';
 
 class UserList extends Component {
@@ -11,5 +11,10 @@ class UserList extends Component {
     );
   }
 }
-
+UserList.propTypes = {
+  children: PropTypes.node,
+};
+UserList.defaultProps = {
+  children: null,
+};
 export default UserList;

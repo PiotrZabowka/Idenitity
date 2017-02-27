@@ -18,6 +18,7 @@
   },
   "dependencies": {
     "aspnet-prerendering": "^2.0.3",
+    "axios": "^0.15.3",
     "babel-polyfill": "^6.23.0",
     "bootstrap": "^3.3.7",
     "classnames": "^2.2.5",
@@ -45,7 +46,6 @@
     "redux-form": "^6.5.0",
     "redux-immutable": "^3.1.0",
     "redux-logger": "^2.8.1",
-    "redux-router": "^2.1.2",
     "redux-saga": "^0.14.3",
     "redux-thunk": "^2.2.0",
     "reselect": "^2.5.4",

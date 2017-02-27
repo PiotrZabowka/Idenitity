@@ -6,10 +6,7 @@ class App extends Component {
   render() {
     return (
       <div className={style.root}>
-        <Bar />
-        <div className={style.container}>
-          {this.props.children}
-        </div>
+        {this.props.children}
       </div>
     );
   }

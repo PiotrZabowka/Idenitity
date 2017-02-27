@@ -12,8 +12,8 @@ module.exports = (env) => {
     resolve: { extensions: ['.js'] },
     module: {
       rules: [
-          { test: /\.(png|woff|woff2|eot|ttf|svg)(\?|$)/, use: 'url-loader?limit=100000' },
-      ],
+          { test: /\.(png|woff|woff2|eot|ttf|svg)(\?|$)/, use: 'url-loader?limit=100000' }
+      ]
     },
     entry: {
       vendor: [
@@ -35,37 +35,37 @@ module.exports = (env) => {
         'sanitize.css/sanitize.css',
         'bootstrap/dist/css/bootstrap.css',
         'react-bootstrap'
-      ],
+      ]
     },
     output: {
       publicPath: '/dist/',
       filename: '[name].js',
-      library: '[name]_[hash]',
+      library: '[name]_[hash]'
     },
     plugins: [
       new webpack.NormalModuleReplacementPlugin(/\/iconv-loader$/, require.resolve('node-noop')), // Workaround for https://github.com/andris9/encoding/issues/16
       new webpack.DefinePlugin({
-        'process.env.NODE_ENV': isDevBuild ? '"development"' : '"production"',
-      }),
-    ],
+        'process.env.NODE_ENV': isDevBuild ? '"development"' : '"production"'
+      })
+    ]
   };
 
   const clientBundleConfig = merge(sharedConfig, {
     output: { path: path.join(__dirname, 'wwwroot', 'dist') },
     module: {
       rules: [
-          { test: /\.css(\?|$)/, use: extractCSS.extract({ use: 'css-loader' }) },
-      ],
+          { test: /\.css(\?|$)/, use: extractCSS.extract({ use: 'css-loader' }) }
+      ]
     },
     plugins: [
       extractCSS,
       new webpack.DllPlugin({
         path: path.join(__dirname, 'wwwroot', 'dist', '[name]-manifest.json'),
-        name: '[name]_[hash]',
-      }),
+        name: '[name]_[hash]'
+      })
     ].concat(isDevBuild ? [] : [
-      new webpack.optimize.UglifyJsPlugin(),
-    ]),
+      new webpack.optimize.UglifyJsPlugin()
+    ])
   });
 
   const serverBundleConfig = merge(sharedConfig, {
@@ -73,18 +73,18 @@ module.exports = (env) => {
     resolve: { mainFields: ['main'] },
     output: {
       path: path.join(__dirname, 'dist'),
-      libraryTarget: 'commonjs2',
+      libraryTarget: 'commonjs2'
     },
     module: {
-      rules: [{ test: /\.css(\?|$)/, use: 'css-loader' }],
+      rules: [{ test: /\.css(\?|$)/, use: 'css-loader' }]
     },
     entry: { vendor: ['aspnet-prerendering', 'react-dom/server'] },
     plugins: [
       new webpack.DllPlugin({
         path: path.join(__dirname, 'dist', '[name]-manifest.json'),
-        name: '[name]_[hash]',
-      }),
-    ],
+        name: '[name]_[hash]'
+      })
+    ]
   });
 
   return [clientBundleConfig, serverBundleConfig];
