@@ -2,6 +2,11 @@
 // Copy this file, and add rule overrides as needed.
 {
   "extends": "airbnb",
-  "globals": {
+  "globals": {},
+  "rules": {
+    "import/no-unresolved":[2, { "ignore":["components","modules","containers"] }],
+    "import/no-extraneous-dependencies": [1],
+    "import/extensions":[1, "never", { "css": "always", "json": "always", "scss": "always" }],
+    "react/prefer-stateless-function":[1]
   }
 }

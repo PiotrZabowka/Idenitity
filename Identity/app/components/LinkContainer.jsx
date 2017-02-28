@@ -52,7 +52,7 @@ const defaultProps = {
 };
 
 class LinkContainer extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.onClick = this.onClick.bind(this);
   }
@@ -81,7 +81,7 @@ class LinkContainer extends React.Component {
     event.preventDefault();
 
     this.context.router[action](
-      createLocationDescriptor(to, query, hash, state)
+      createLocationDescriptor(to, query, hash, state),
     );
   }
 

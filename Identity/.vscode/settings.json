@@ -11,5 +11,6 @@
     "**/obj/":true,
     "**/*.user":true,
     "**/.vscode":true
-  }
+},
+"eslint.enable": true
 }

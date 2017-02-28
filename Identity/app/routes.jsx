@@ -15,7 +15,7 @@ import {
   ClientList,
 } from './containers';
 
-import { requireAuthentication } from './components/AuthenticatedComponent';
+import requireAuthentication from './components/AuthenticatedComponent';
 
 const routes = () =>
 /**

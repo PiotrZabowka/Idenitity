@@ -1,8 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import LoginForm from 'components/LoginForm';
-import style from './Login.css';
 import { requestLogin } from 'modules/auth';
+import style from './Login.css';
 
 class Login extends Component {
   render() {
