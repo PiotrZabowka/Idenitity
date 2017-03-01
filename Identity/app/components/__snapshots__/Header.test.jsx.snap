@@ -1,4 +1,4 @@
-exports[`test Link changes the class when hovered 1`] = `
+exports[`<Header /> Link changes the class when hovered 1`] = `
 <h1
   className="hrfEcl">
   Facebook
